@@ -1,3 +1,4 @@
+
 import { HttpResponse } from '@angular/common/http/src/response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RestService } from './rest.service';
@@ -13,18 +14,16 @@ export class AppComponent {
  constructor(private service: RestService){
 
  }
- getData(){
+ getData() {
   this.service.getData().subscribe(
    ( res: HttpResponse<any>) => {
      console.log(res);
-      //this.data = data;
+     console.log(res.status);
+      this.data = res.body;
     },
     (err: HttpErrorResponse)  => {
       console.log(err);
       console.log(err);
-    }
-
-  );
-
+    });
  }
 }
